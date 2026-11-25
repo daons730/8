@@ -1,0 +1,8 @@
+GIF decoding: gifuct-js and js-binary-schema-parser, MIT.
+GIF encoding: gifenc, MIT, supplied with the original site.
+GIF optimization: gifsicle-wasm 1.96.4, GPL-2.0-only.
+Source and build recipe: https://github.com/ysamlan/gifsicle-bin
+MP4 conversion: @ffmpeg/core 0.12.10 with libx264, GPL-2.0-or-later.
+Source and build recipe: https://github.com/ffmpegwasm/ffmpeg.wasm/tree/v0.12.10
+FFmpeg source: https://github.com/FFmpeg/FFmpeg
+x264 source: https://code.videolan.org/videolan/x264
