@@ -1,0 +1,1 @@
+import "../gif-worker.js";
