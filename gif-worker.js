@@ -1,4 +1,4 @@
-import { parseGIF, decompressFrame } from "../vendor/gif-reader.js";
+import { parseGIF, decompressFrame } from "./gif-reader.js";
 import { GIFEncoder, quantize, applyPalette } from "./gifenc.esm.js";
 
 function readGif(buffer) {
@@ -228,7 +228,7 @@ function frameDelays(gif, tool, values) {
 }
 
 async function optimize(buffer) {
-  const { default: createGifsicle } = await import("../vendor/gifsicle.js");
+  const { default: createGifsicle } = await import("./gifsicle.js");
   const mod = await createGifsicle({ printErr: console.warn });
   mod.FS.writeFile("/original.gif", new Uint8Array(buffer));
   const args = ["gifsicle", "-O3", "-o", "/result.gif", "/original.gif"];
@@ -247,8 +247,8 @@ async function optimize(buffer) {
 }
 
 async function toMp4(buffer, info) {
-  const { default: createFFmpeg } = await import("../vendor/ffmpeg-core.js");
-  const response = await fetch(new URL("../vendor/ffmpeg-core.wasm.gz", import.meta.url));
+  const { default: createFFmpeg } = await import("./ffmpeg-core.js");
+  const response = await fetch(new URL("./ffmpeg-core.wasm.gz", import.meta.url));
   if (!response.ok || !response.body) throw new Error("MP4 변환 모듈을 불러올 수 없습니다.");
   const decompressed = response.body.pipeThrough(new DecompressionStream("gzip"));
   const wasmBinary = await new Response(decompressed).arrayBuffer();
